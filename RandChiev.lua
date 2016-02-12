@@ -60,7 +60,7 @@ function RandChiev_SlashCommand(msg)
 	elseif(msg == "help") then
 		print("Help list will come here, with possible commands");
 	elseif not(msg == "") then
-		print("Hey, that's not a correct command, run /rc help if you want to know them all.");
+		print("Hey, that's not a correct command, run |cff145912/rc help|r to get more help");
 	else
 		local anySelected = false;
 
