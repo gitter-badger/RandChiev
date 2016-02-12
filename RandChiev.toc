@@ -1,0 +1,12 @@
+## Interface: 30300
+## Title: RandChiev
+## Notes: Gets a random achievement for you to complete
+## Author: Tom Matheussen
+## Version: 0.2
+## SavedVariables: RandChievOptions
+
+RandChiev.lua
+RandChiev.xml 
+
+RandChievOptions.lua
+RandChievOptions.xml
