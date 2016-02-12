@@ -8,8 +8,8 @@ This repository holds my own created addon, named RandChiev, which will select a
 - Error handling on a lot of stuff
 - Open Achievement Window to the returned achievement
 - Find a better way to display the returned achievement
-- Check for Realm first (those can't be completed anymore)
 - Color coding on print messages
+- Faction dependant checking
 
 # Done
 - Config screen
@@ -19,3 +19,4 @@ This repository holds my own created addon, named RandChiev, which will select a
 - Check if any category is selected
 - Support for multiple slashcommand
 - Support for message in slashcommands
+- No Realm first are included

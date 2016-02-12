@@ -15,34 +15,35 @@ end
 
 function checkAchievementParameters(achievementId)
 	local id, name, _, completed, _, _, _, _, flags = GetAchievementInfo(achievementId);
-	
+
+	-- No Id found, means no achievement/statistic present
 	if(id == nil) then
-		return nil;
+		return false;
 	end
 	
 	-- Flags 1 = Statistic
-	-- Flags 256 and 768 = Realm first
-	if (bit.band(flags, 0x00000001) == 1) then
-		return nil
-	--elseif (completed) then	
-	--	return nil;
+	if (bit.band(flags) == 0x00000001) then
+		return false;
 	end
-	
+
+	-- Flags 256 and 768 are Realm Firsts
+	if(bit.band(flags) == 0x00000100 or bit.band(flags) == 0x00000300) then
+		return false;
+	end	
+
+	-- TODO: Check this
 	local categoryId = GetAchievementCategory(achievementId);	
 	
 	local parentId = getParentCategory(categoryId);
 
 	if not(RandChievOptions[parentId]) then
-		return nil;
-	end;
-	
-	if (completed) then
-		return nil;
+		return false;
 	end
-
-	print(flags);
-	print (bit.band(flags, 0x00000768) == 1);
 	
+	-- Check if already completed
+	if (completed) then
+		return false;
+	end	
 	
 	return true;
 
@@ -57,9 +58,13 @@ function checkAchievementParameters(achievementId)
 end	
 
 function RandChiev_FindAchievement()
-	repeat x = math.random(1,10000)
-	until checkAchievementParameters(x) ~= nil
-	print (GetAchievementLink(x));
+	local i = 1;
+	while i < 10 do
+		repeat x = math.random(1,10000)
+		until checkAchievementParameters(x)
+		print (GetAchievementLink(x));
+		i = i + 1;
+	end
 	AddTrackedAchievement(x);
 end
 
