@@ -20,8 +20,6 @@ function checkAchievementParameters(achievementId)
 		return nil;
 	end
 	
-	
-	
 	-- Flags 1 = Statistic
 	-- Flags 256 and 768 = Realm first
 	if (bit.band(flags, 0x00000001) == 1) then
@@ -58,6 +56,13 @@ function checkAchievementParameters(achievementId)
 	--end
 end	
 
+function RandChiev_FindAchievement()
+	repeat x = math.random(1,10000)
+	until checkAchievementParameters(x) ~= nil
+	print (GetAchievementLink(x));
+	AddTrackedAchievement(x);
+end
+
 function RandChiev_SlashCommand(msg)
 	if(msg == "config") then
 		InterfaceOptionsFrame_OpenToCategory("RandChiev");
@@ -79,13 +84,9 @@ function RandChiev_SlashCommand(msg)
 
 		if not(anySelected) then
 			print("No categories selected, how could I give you an achievement to do now?");
-		end
-
-
-		repeat x = math.random(1,10000)
-	    until checkAchievementParameters(x) ~= nil
-	    print (GetAchievementLink(x));
-	    AddTrackedAchievement(x);
+		else 
+			RandChiev_FindAchievement();
+		end	
 	end
 end
 
