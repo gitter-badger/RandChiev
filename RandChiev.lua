@@ -8,6 +8,7 @@ function RandChiev_OnLoad()
 	this:RegisterEvent("ADDON_LOADED");
 	
 	SLASH_RANDCHIEV1 = "/randchiev";
+	SLASH_RANDCHIEV2 = "/rc";
 
 	SlashCmdList["RANDCHIEV"] = RandChiev_SlashCommand;
 end
@@ -51,28 +52,36 @@ function checkAchievementParameters(achievementId)
 	--else
 	--	return achievementId;
 	--end
-end
+end	
 
 function RandChiev_SlashCommand(msg)
-	local anySelected = false;
+	if(msg == "config") then
+		print("Should open config screen");
+	elseif(msg == "help") then
+		print("Help list will come here, with possible commands");
+	elseif not(msg == "") then
+		print("Hey, that's not a correct command, run /rc help if you want to know them all.");
+	else
+		local anySelected = false;
 
-	--TODO: Check for categories (all done)
-	for _, value in pairs(RandChievOptions) do
-		if(value) then
-			anySelected = true;
-			--TODO: Maybe check count here
-			break;
+		--TODO: Check for categories (all done)
+		for _, value in pairs(RandChievOptions) do
+			if(value) then
+				anySelected = true;
+				--TODO: Maybe check count here
+				break;
+			end
 		end
+
+		if not(anySelected) then
+			print("No categories selected, how could I give you an achievement to do now?");
+		end
+
+
+		--repeat x = math.random(1,10000)
+	   --until checkAchievementParameters(x) ~= nil
+	   --print (GetAchievementLink(x))
 	end
-
-	if (anySelected == false) then
-		print("No categories selected, how could I give you an achievement to do now?");
-	end
-
-
-	--repeat x = math.random(1,10000)
-   --until checkAchievementParameters(x) ~= nil
-   --print (GetAchievementLink(x))
 end
 
 function RandChiev_Init()
