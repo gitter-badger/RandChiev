@@ -56,7 +56,7 @@ end
 
 function RandChiev_SlashCommand(msg)
 	if(msg == "config") then
-		print("Should open config screen");
+		InterfaceOptionsFrame_OpenToCategory("RandChiev");
 	elseif(msg == "help") then
 		print("Help list will come here, with possible commands");
 	elseif not(msg == "") then

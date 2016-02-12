@@ -11,7 +11,6 @@ This repository holds my own created addon, named RandChiev, which will select a
 - Find a better way to display the returned achievement
 - Check for Realm first (those can't be completed anymore)
 - Color coding on print messages
-- Actually open config screen instead of printing it
 
 # Done
 - Config screen
