@@ -38,6 +38,10 @@ function checkAchievementParameters(achievementId)
 		return nil;
 	end;
 	
+	if (completed) then
+		return nil;
+	end
+
 	print(flags);
 	print (bit.band(flags, 0x00000768) == 1);
 	
@@ -78,9 +82,10 @@ function RandChiev_SlashCommand(msg)
 		end
 
 
-		--repeat x = math.random(1,10000)
-	   --until checkAchievementParameters(x) ~= nil
-	   --print (GetAchievementLink(x))
+		repeat x = math.random(1,10000)
+	    until checkAchievementParameters(x) ~= nil
+	    print (GetAchievementLink(x));
+	    AddTrackedAchievement(x);
 	end
 end
 
