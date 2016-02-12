@@ -11,8 +11,10 @@ This repository holds my own created addon, named RandChiev, which will select a
 - Open Achievement Window to the returned achievement
 - Find a better way to display the returned achievement
 - Check for Realm first (those can't be completed anymore)
+- Slashcommand for opening config screen
 
 # Done
 - Config screen
 - Random achievement returned and printed in chat
 - Check the achievement for completed status
+- Slashcommand for retrieving achievement
