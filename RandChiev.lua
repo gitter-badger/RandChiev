@@ -55,7 +55,8 @@ end
 
 function RandChiev_SlashCommand(msg)
 	local anySelected = false;
-	--TODO: Check for categories (all done, any selected)
+
+	--TODO: Check for categories (all done)
 	for _, value in pairs(RandChievOptions) do
 		if(value) then
 			anySelected = true;
@@ -64,7 +65,9 @@ function RandChiev_SlashCommand(msg)
 		end
 	end
 
-	print(anySelected);
+	if (anySelected == false) then
+		print("No categories selected, how could I give you an achievement to do now?");
+	end
 
 
 	--repeat x = math.random(1,10000)

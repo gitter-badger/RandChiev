@@ -20,7 +20,7 @@ function RandChievOptions_Init()
 		mybutton:SetChecked(value);
 		mybutton:SetAttribute("categoryId", key);
 		mybutton:SetScript("OnClick", function(self, button)
-			RandChievOptions[key] = not value;
+			RandChievOptions[key] = not RandChievOptions[key];
 		end)
 		
 		position = position - 25;
