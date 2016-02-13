@@ -72,7 +72,7 @@ function RandChiev_SlashCommand(msg)
 	if(msg == "config") then
 		InterfaceOptionsFrame_OpenToCategory("RandChiev");
 	elseif(msg == "help") then
-		print("Help list will come here, with possible commands");
+		print("RandChiev help:\n/rc or /randchiev: Gets an achievement to do.\n/rc config: Opens the config screen.\n/rc help: This help text.");
 	elseif not(msg == "") then
 		print("|cffff0000Hey, that's not a correct command, run |cff145912/rc help |cffff0000to get more help.|r");
 	else
