@@ -13,6 +13,16 @@ function RandChiev_OnLoad()
 	SlashCmdList["RANDCHIEV"] = RandChiev_SlashCommand;
 end
 
+function checkAchievementFlags(flags)
+	-- Flags 1 = Statistic
+	-- Flags 256 and 768 are Realm Firsts
+	if(bit.band(flags) == 0x00000001 or bit.band(flags) == 0x00000100 or bit.band(flags) == 0x00000300) then
+		return true;
+	else
+		return false;
+	end
+end
+
 function checkAchievementParameters(achievementId)
 	local id, name, _, completed, _, _, _, _, flags = GetAchievementInfo(achievementId);
 
@@ -21,15 +31,9 @@ function checkAchievementParameters(achievementId)
 		return false;
 	end
 	
-	-- Flags 1 = Statistic
-	if (bit.band(flags) == 0x00000001) then
+	if(checkAchievementFlags(flags)) then
 		return false;
 	end
-
-	-- Flags 256 and 768 are Realm Firsts
-	if(bit.band(flags) == 0x00000100 or bit.band(flags) == 0x00000300) then
-		return false;
-	end	
 
 	-- TODO: Check this
 	local categoryId = GetAchievementCategory(achievementId);	
@@ -46,23 +50,16 @@ function checkAchievementParameters(achievementId)
 	end	
 	
 	return true;
-
-	
-	--if(not RandChievOptions[parentid]) then
-	--	return nil;
-	--elseif(completed) then
-	--	return nil;
-	--else
-	--	return achievementId;
-	--end
 end	
 
 function RandChiev_FindAchievement()
-	local i = 1;
+	local i = 0;
 	while i < 100000 do
 		x = math.random(1,10000)
 		if(checkAchievementParameters(x)) then
 			print (GetAchievementLink(x));
+
+			--TODO: Add option in config to enable/disable tracking
 			--AddTrackedAchievement(x);
 			return true;
 		end

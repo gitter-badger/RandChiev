@@ -3,13 +3,11 @@ This repository holds my own created addon, named RandChiev, which will select a
 
 # TODO
 - Check if there are any achievements left to do, in the selected categories
-- Check if the achievement category is selected
 - Check if a world event is active, before returning the achievement
-- Error handling on a lot of stuff
 - Open Achievement Window to the returned achievement
 - Find a better way to display the returned achievement
-- Color coding on print messages
 - Faction dependant checking
+- Checking on achievements in a series, make sure the available one is given (not 3 steps ahead)
 
 # Done
 - Config screen
