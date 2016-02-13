@@ -2,7 +2,7 @@
 ## Title: RandChiev
 ## Notes: Gets a random achievement for you to complete
 ## Author: Tom Matheussen
-## Version: 0.2
+## Version: 0.3
 ## SavedVariables: RandChievOptions
 
 RandChiev.lua

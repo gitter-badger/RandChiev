@@ -15,8 +15,8 @@ function RandChievOptions_Init()
 		mybutton = CreateFrame("CheckButton", key, RandChievOptionsFrame, "InterfaceOptionsSmallCheckButtonTemplate");
 		mybutton:SetPoint("TOPLEFT", 15, position);
 
-		getglobal(mybutton:GetName().."Text"):SetText(GetCategoryInfo(key));
-		
+		getglobal(mybutton:GetName().."Text"):SetText(GetCategoryInfo(key) .. " (" .. GetPercentageDone(key) .. "%)");
+
 		mybutton:SetChecked(value);
 		mybutton:SetAttribute("categoryId", key);
 		mybutton:SetScript("OnClick", function(self, button)
@@ -32,4 +32,23 @@ function SortByNameFunction(a, b)
 	local nameB = GetCategoryInfo(b); 
 
 	return nameA < nameB;
+end
+
+function GetPercentageDone(categoryId)
+	local totalNumberOfAchievements, totalNumberOfDone = GetCategoryNumAchievements(categoryId, true);
+
+	for key,value in pairs(GetCategoryList()) do
+		local _, parentid = GetCategoryInfo(value);
+
+		if(parentid == categoryId) then
+			local all, done = GetCategoryNumAchievements(value, true);
+
+			totalNumberOfAchievements = totalNumberOfAchievements + all;
+			totalNumberOfDone = totalNumberOfDone + done;
+		end
+	end
+
+	local percentageDone = math.floor((totalNumberOfDone / totalNumberOfAchievements * 100) + 0.5);
+
+	return percentageDone;
 end
