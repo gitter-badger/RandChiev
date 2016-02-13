@@ -59,13 +59,16 @@ end
 
 function RandChiev_FindAchievement()
 	local i = 1;
-	while i < 10 do
-		repeat x = math.random(1,10000)
-		until checkAchievementParameters(x)
-		print (GetAchievementLink(x));
+	while i < 100000 do
+		x = math.random(1,10000)
+		if(checkAchievementParameters(x)) then
+			print (GetAchievementLink(x));
+			--AddTrackedAchievement(x);
+			return true;
+		end
 		i = i + 1;
 	end
-	AddTrackedAchievement(x);
+	return false;
 end
 
 function RandChiev_SlashCommand(msg)
@@ -74,7 +77,7 @@ function RandChiev_SlashCommand(msg)
 	elseif(msg == "help") then
 		print("Help list will come here, with possible commands");
 	elseif not(msg == "") then
-		print("Hey, that's not a correct command, run |cff145912/rc help|r to get more help");
+		print("|cffff0000Hey, that's not a correct command, run |cff145912/rc help |cffff0000to get more help.|r");
 	else
 		local anySelected = false;
 
@@ -88,9 +91,11 @@ function RandChiev_SlashCommand(msg)
 		end
 
 		if not(anySelected) then
-			print("No categories selected, how could I give you an achievement to do now?");
+			print("|cffec1919No categories selected, how could I give you an achievement to do now?|r");
 		else 
-			RandChiev_FindAchievement();
+			if not(RandChiev_FindAchievement()) then
+				print("Oops, it seems RandChiev could not find any achievements to do, you probably have done a lot already, congratulations!! (Running RandChiev again might give better results)");
+			end
 		end	
 	end
 end
