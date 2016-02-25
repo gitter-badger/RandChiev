@@ -1,4 +1,6 @@
 # RandChiev
+
+[![Join the chat at https://gitter.im/Tommatheussen/RandChiev](https://badges.gitter.im/Tommatheussen/RandChiev.svg)](https://gitter.im/Tommatheussen/RandChiev?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 This repository holds my own created addon, named RandChiev, which will select any random achievement for you to do in WoW (3.3.5)
 
 # TODO
